@@ -5,6 +5,10 @@ import math
 
 app = FastAPI()
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+    
 def perform_math_calculation(number):
     t = number
 

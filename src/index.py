@@ -20,7 +20,6 @@ def perform_math_calculation(number):
         "atan2_art_t": atan2_art_t
     }
 
-@app.get("/calculate?int={number}")
 @app.get("/calculate")
 async def calculate(number: int):
     loop = asyncio.get_event_loop()

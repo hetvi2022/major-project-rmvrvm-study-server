@@ -17,9 +17,9 @@ async def matrix_multiplication():
         return [ [random.randint(1, 100) for _ in range(cols)] for _ in range(rows)]
 
     # Generating the first matrix
-    dimension1 = random.randint(200, 500)
-    dimension2 = random.randint(200, 500)
-    dimension3 = random.randint(200, 500)
+    dimension1 = random.randint(100, 200)
+    dimension2 = random.randint(100, 200)
+    dimension3 = random.randint(100, 200)
     
     matrix1 = generate_matrix(dimension1, dimension2)
 

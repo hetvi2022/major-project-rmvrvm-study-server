@@ -43,8 +43,6 @@ async def matrix_multiplication(matrix1, matrix2):
     
     return json.dumps(matrix)
 
-
-@app.get("/calculate/{number}")
 def perform_math_calculation(number):
     t = number
 
@@ -59,6 +57,8 @@ def perform_math_calculation(number):
         "atan2_t_art": atan2_t_art,
         "atan2_art_t": atan2_art_t
     }
+
+@app.get("/calculate?int={number}")
 
 if __name__ == "__main__":
     import uvicorn

@@ -59,7 +59,15 @@ def perform_math_calculation(number):
     }
 
 @app.get("/calculate?int={number}")
+async def calculate(number: int):
+    loop = asyncio.get_event_loop()
 
+    # Execute the math calculation asynchronously using a thread pool executor
+    with concurrent.futures.ThreadPoolExecutor() as pool:
+        result = await loop.run_in_executor(pool, perform_math_calculation, number)
+
+    return {"result": result}
+    
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -41,7 +41,7 @@ async def matrix_multiplication(matrix1, matrix2):
     for row in result:
         print(row)
     
-    return result
+    return json.dumps(matrix)
 
 
 @app.get("/calculate/{number}")

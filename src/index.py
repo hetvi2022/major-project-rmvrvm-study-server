@@ -6,11 +6,37 @@ import random
 
 app = FastAPI()
 
+exponential_counter = 0.1  # Initialize the exponential counter
+def exponential_function(limit):
+    result = 1
+    while True:
+        yield result
+        result *= 2
+        if result > limit:
+            break
+
 @app.get("/")
 def greetings():
     return {"Home Page"}
 
+@app.get("/exponential/{limit}")
+async def calculate_exponential(limit: int):
+    exp_gen = exponential_function(limit)
+    exponential_values = [value for value in exp_gen]
+    return {"exponential_values": exponential_values}
 
+@app.get("/exponential_increase")
+async def exponential_increase():
+    global exponential_counter  # Use the global counter variable
+
+    # Calculate the current exponential value
+    current_exponential_value = math.exp(exponential_counter)
+
+    # Increment the counter for the next call
+    exponential_counter += 0.1  # You can adjust the increment factor as needed
+
+    return {"exponential_value": current_exponential_value}
+    
 @app.get("/matrix_multiplication")
 async def matrix_multiplication():
     def generate_matrix(rows, cols):
